@@ -14,9 +14,6 @@ export default function App() {
   // Dùng để báo cho Dashboard tải lại dữ liệu
   const [dataVersion, setDataVersion] = useState(0);
 
-  // ========================================
-  // TỰ ĐỘNG ĐỒNG BỘ
-  // ========================================
 
   async function autoSync() {
     // Không có mạng thì không đồng bộ
@@ -27,8 +24,7 @@ export default function App() {
     try {
       const result = await syncPendingSurveys();
 
-      // Có phiên được đồng bộ thành công
-      if (result.successCount > 0) {
+        if (result.successCount > 0) {
         console.log(
           `✓ Đã đồng bộ ${result.successCount} phiên`
         );
@@ -58,22 +54,33 @@ export default function App() {
     }
   }
 
-  // ========================================
-  // XIN QUYỀN NOTIFICATION
-  // ========================================
 
-  useEffect(() => {
-    if (
-      "Notification" in window &&
-      Notification.permission === "default"
-    ) {
-      Notification.requestPermission();
+useEffect(() => {
+  async function requestNotificationPermission() {
+    if (!("Notification" in window)) {
+      console.log("Trình duyệt không hỗ trợ Notification");
+      return;
     }
-  }, []);
 
-  // ========================================
-  // AUTO SYNC
-  // ========================================
+    console.log(
+      "Notification permission:",
+      Notification.permission
+    );
+
+    if (Notification.permission === "default") {
+      const permission =
+        await Notification.requestPermission();
+
+      console.log(
+        "Notification permission sau khi cấp:",
+        permission
+      );
+    }
+  }
+
+  requestNotificationPermission();
+}, []);
+
 
   useEffect(() => {
     // Khi mở app
@@ -107,9 +114,6 @@ export default function App() {
     };
   }, []);
 
-  // ========================================
-  // TRANG TẠO KHẢO SÁT
-  // ========================================
 
   if (page === "new") {
     return (
@@ -121,10 +125,6 @@ export default function App() {
     );
   }
 
-  // ========================================
-  // TRANG DANH SÁCH
-  // ========================================
-
   if (page === "list") {
     return (
       <SurveyList
@@ -134,10 +134,6 @@ export default function App() {
       />
     );
   }
-
-  // ========================================
-  // DASHBOARD
-  // ========================================
 
   return (
     <Dashboard

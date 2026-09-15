@@ -241,12 +241,12 @@ export default function NewSurvey({ onBack }) {
           </div>
 
           <div className="input-group">
-            <label>Mã số sinh viên (MSSV)</label>
+            <label>Mã SV</label>
             <input
              type="text"
               value={studentId}
               onChange={e => setStudentId(e.target.value)}
-              placeholder="Ví dụ: 22115053....."
+              placeholder=" xxx"
             />
           </div>
 
@@ -256,11 +256,11 @@ export default function NewSurvey({ onBack }) {
               value={faculty}
               onChange={e => setFaculty(e.target.value)}
             >
-              <option value="">-- Chọn Khoa / Ngành --</option>
+              <option value="">-- Chọn --</option>
               <option>Công nghệ thông tin</option>
               <option>Kinh tế số</option>
               <option>Du lịch</option>
-              <option>Điện - Điện tử</option>
+              <option>Điện tử</option>
               <option>Khác</option>
             </select>
           </div>
@@ -286,7 +286,7 @@ export default function NewSurvey({ onBack }) {
 
           <div className="question-group">
             <label className="question-title">
-              1. Bạn đã từng có kinh nghiệm làm thêm hoặc thực tập trước đây chưa?
+              1. Bạn đã có kinh nghiệm làm thêm/thực tập trước đây chưa?
             </label>
             <div className="radio-group">
               {["Có", "Chưa"].map(option => (
@@ -333,7 +333,6 @@ export default function NewSurvey({ onBack }) {
                 "Part-time",
                 "Full-time",
                 "Internship",
-                // "Freelance",
                 "Remote"
               ].map(option => (
                 <label className="checkbox-row" key={option}>
@@ -359,9 +358,7 @@ export default function NewSurvey({ onBack }) {
                 "Software Developer",
                 "Tester",
                 "AI",
-                "Data",
                 "Marketing",
-                "Business",
                 "Khác"
               ].map(option => (
                 <label className="checkbox-row" key={option}>
@@ -386,7 +383,7 @@ export default function NewSurvey({ onBack }) {
               value={q5}
               onChange={e => setQ5(e.target.value)}
             >
-              <option value="">-- Chọn mức thu nhập kỳ vọng --</option>
+              <option value="">-- Chọn --</option>
               <option>Dưới 5 triệu</option>
               <option>5 - 10 triệu</option>
               <option>10 - 20 triệu</option>
@@ -401,11 +398,10 @@ export default function NewSurvey({ onBack }) {
             </label>
             <div className="checkbox-group">
               {[
-                "Thiếu kinh nghiệm",
-                "Thiếu kỹ năng",
+                "Thiếu kinh nghiệm/kỹ năng",
                 "Không biết tìm việc ở đâu",
-                "CV chưa tốt",
-                "Thiếu ngoại ngữ"
+                "Thiếu ngoại ngữ",
+                "Khác"
               ].map(option => (
                 <label className="checkbox-row" key={option}>
                   <input
@@ -423,12 +419,12 @@ export default function NewSurvey({ onBack }) {
 
           <div className="question-group">
             <label className="question-title">
-              7. Nhà trường cần hỗ trợ thêm cho bạn ở những khía cạnh nào?
+              7. Nhà trường cần hỗ trợ gì thêm cho bạn?
             </label>
             <div className="checkbox-group">
               {[
                 // "Viết CV",
-                "Luyện phỏng vấn",
+                "Phỏng vấn thử",
                 "Tìm Internship",
                 "Định hướng nghề nghiệp",
                 "Kỹ năng chuyên môn",
@@ -456,7 +452,7 @@ export default function NewSurvey({ onBack }) {
               value={q8}
               onChange={e => setQ8(e.target.value)}
               rows="4"
-              placeholder="Nhập ghi chú hoặc nguyện vọng thêm của sinh viên..."
+              placeholder="Nhập ..."
             />
           </div>
         </section>

@@ -41,20 +41,19 @@ button {
   max-width: 414px;
   min-height: 844px;
   margin: 0 auto;
-  padding: 24px 20px 40px;
-  background: linear-gradient(145deg, #4f46e5 0%, #7c3aed 35%, #06b6d4 100%);
+  padding: 24px 20px 28px;
+  background: linear-gradient(160deg, #4f46e5 0%, #6366f1 30%, #0284c7 100%);
   position: relative;
   overflow: hidden;
+  border-radius: 44px;
+  border: 10px solid #0f172a;
+  box-shadow: 
+    0 25px 60px -15px rgba(15, 23, 42, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+    
   display: flex;
   flex-direction: column;
-
-  /* --- CẬP NHẬT VIỀN GRADIENT --- */
-  border-radius: 44px;
-  border: 10px solid #1e1b4b; /* Tím đen hòa quyện với gradient bên trong */
-  
-  box-shadow: 
-    0 0 0 2px rgba(124, 58, 237, 0.5), /* Dải neon mỏng bao quanh */
-    0 25px 50px -12px rgba(30, 27, 75, 0.4);
+  gap: 16px;
 }
 
 .page::before {
@@ -76,8 +75,8 @@ button {
 .header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 4px;
   z-index: 1;
 }
 
@@ -145,12 +144,12 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 24px;
+  margin-top: auto; 
   z-index: 1;
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.9);
+ background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   padding: 14px 8px;
   border-radius: 20px;
@@ -158,9 +157,8 @@ button {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  transition: transform 0.2s ease;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .stat-card:hover {
@@ -217,14 +215,14 @@ button {
 .dashboard-buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: auto;
+  gap: 16px;
+  margin-top: 38px;
   z-index: 1;
 }
 
 .primary-button, .secondary-button, .sync-button {
   width: 100%;
-  min-height: 56px;
+  min-height: 54px;
   border-radius: 18px;
   padding: 14px 20px;
   font-size: 15px;
@@ -234,7 +232,7 @@ button {
   justify-content: center;
   gap: 10px;
   border: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .primary-button {
@@ -244,17 +242,17 @@ button {
 }
 
 .secondary-button {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   color: #4f46e5;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .sync-button {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);}
+
 
 .primary-button:active, .secondary-button:active, .sync-button:active {
   transform: scale(0.97);
@@ -265,6 +263,40 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/*===================================================== */
+.quick-info-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  padding: 16px;
+  color: #ffffff;
+  margin: 4px 0;
+  z-index: 1;
+}
+
+.info-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.quick-info-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.quick-info-card p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
 /* =====================================================
    PAGE TITLE & SURVEY LIST
 ===================================================== */

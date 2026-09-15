@@ -11,10 +11,6 @@ export default function Dashboard({
 }) {
   const [surveys, setSurveys] = useState([]);
 
-  // ========================================
-  // TẢI DỮ LIỆU TỪ INDEXEDDB
-  // ========================================
-
   async function loadData() {
     try {
       const data = await getAllSurveys();
@@ -28,23 +24,9 @@ export default function Dashboard({
     }
   }
 
-  // ========================================
-  // TẢI LẠI DỮ LIỆU
-  // ========================================
-  //
-  // dataVersion thay đổi khi App.jsx
-  // đồng bộ dữ liệu thành công.
-  //
-  // Vì vậy Dashboard sẽ tự cập nhật.
-  //
-
   useEffect(() => {
     loadData();
   }, [dataVersion]);
-
-  // ========================================
-  // THỐNG KÊ
-  // ========================================
 
   const synced =
     surveys.filter(
@@ -58,10 +40,6 @@ export default function Dashboard({
         survey.syncStatus === "pending" ||
         survey.syncStatus === "error"
     ).length;
-
-  // ========================================
-  // GIAO DIỆN
-  // ========================================
 
   return (
     <div className="page">

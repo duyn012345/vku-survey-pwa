@@ -33,9 +33,7 @@ button {
   background: radial-gradient(circle at center, #f1f5f9 0%, #cbd5e1 100%);
 }
 
-/* =====================================================
-   APP - GIẢ LẬP MÀN HÌNH ĐIỆN THOẠI (iOS Style)
-===================================================== */
+
 .page {
   width: 100%;
   max-width: 414px;
@@ -69,9 +67,6 @@ button {
   pointer-events: none;
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
 .header {
   display: flex;
   flex-direction: column;
@@ -110,9 +105,6 @@ button {
   font-weight: 500;
 }
 
-/* =====================================================
-   NETWORK
-===================================================== */
 .network {
   display: flex;
   justify-content: space-between;
@@ -137,9 +129,6 @@ button {
   color: #b91c1c;
 }
 
-/* =====================================================
-   STATISTICS
-===================================================== */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -297,9 +286,7 @@ button:disabled {
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.88);
 }
-/* =====================================================
-   PAGE TITLE & SURVEY LIST
-===================================================== */
+
 .page-title {
   display: flex;
   align-items: center;
@@ -404,11 +391,7 @@ button:disabled {
   margin-bottom: 8px;
 }
 
-/* // newSurrvey */
 
-/* =====================================================
-   FORM LAYOUT & SECTIONS
-===================================================== */
 .survey-form {
   display: flex;
   flex-direction: column;
@@ -439,10 +422,6 @@ button:disabled {
   border-bottom: 1px dashed #cbd5e1;
   padding-bottom: 8px;
 }
-
-/* =====================================================
-   INPUTS, SELECTS & TEXTAREA
-===================================================== */
 .input-group {
   display: flex;
   flex-direction: column;
@@ -477,27 +456,26 @@ button:disabled {
 .input-with-icon input {
   padding-left: 44px !important;
 }
-/* Base style cho tất cả ô nhập liệu */
+
 .survey-form input[type="text"],
 .survey-form select,
 .survey-form textarea {
   width: 100%;
   padding: 13px 16px;
-  border-radius: 14px !important; /* Bo góc mượt */
-  border: 1.5px solid #e2e8f0 !important; /* Viền xám mỏng sang trọng */
+  border-radius: 14px !important;
+  border: 1.5px solid #e2e8f0 !important;
   background: rgba(248, 250, 252, 0.8) !important;
   font-size: 14px;
   font-family: inherit;
   color: #0f172a;
   outline: none;
   box-sizing: border-box;
-  appearance: none; /* Xóa style mặc định của trình duyệt */
+  appearance: none; 
   -webkit-appearance: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-/* Placeholder màu dịu hơn */
 .survey-form input::placeholder,
 .survey-form textarea::placeholder {
   color: #94a3b8;
@@ -514,7 +492,7 @@ button:disabled {
   transform: translateY(-1px);
 }
 
-/* Style riêng cho Thẻ Select (Menu thả xuống) */
+
 .survey-form select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%206366f1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
@@ -524,16 +502,14 @@ button:disabled {
   cursor: pointer;
 }
 
-/* Style riêng cho Textarea */
+
 .survey-form textarea {
   resize: vertical;
   min-height: 90px;
   line-height: 1.5;
 }
 
-/* =====================================================
-   LOCATION & TIME
-===================================================== */
+
 .time-display {
   margin: 0;
   font-size: 13px;
@@ -571,9 +547,6 @@ button:disabled {
   margin: 0;
 }
 
-/* =====================================================
-   RADIOS & CHECKBOXES
-===================================================== */
 .radio-group {
   display: flex;
   gap: 12px;
@@ -620,9 +593,6 @@ button:disabled {
   accent-color: #4f46e5;
 }
 
-/* =====================================================
-   FILE & SUBMIT
-===================================================== */
 .file-input-wrapper {
   position: relative;
   overflow: hidden;
@@ -693,17 +663,17 @@ button:disabled {
   .page {
     max-width: 100vw;
     min-height: 100vh;
-    min-height: 100dvh; /* Tối ưu cho thanh điều hướng trên Safari/Chrome mobile */
-    border-radius: 0 !important; /* Bỏ bo góc giả lập */
-    border: none !important; /* Xóa viền điện thoại giả lập */
-    box-shadow: none !important; /* Xóa bóng đổ giả lập */
+    min-height: 100dvh; 
+    border-radius: 0 !important; 
+    border: none !important; 
+    box-shadow: none !important;
     padding: 20px 16px 30px;
   }
 
-  /* Tối ưu cuộn vuốt mượt trên điện thoại */
+
   .survey-list,
   .survey-form {
-    max-height: none; /* Cho phép cuộn theo màn hình tự nhiên */
+    max-height: none;
     -webkit-overflow-scrolling: touch;
   }
 }

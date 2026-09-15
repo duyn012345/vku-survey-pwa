@@ -387,7 +387,7 @@ export default function NewSurvey({ onBack }) {
               <option>Dưới 5 triệu</option>
               <option>5 - 10 triệu</option>
               <option>10 - 20 triệu</option>
-              {/* <option>8 - 12 triệu</option> */}
+      
               <option>Trên 20 triệu</option>
             </select>
           </div>

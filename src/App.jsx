@@ -83,7 +83,6 @@ useEffect(() => {
 
 
   useEffect(() => {
-    // Khi mở app
     autoSync();
 
     // Khi Offline → Online
@@ -98,7 +97,7 @@ useEffect(() => {
       handleOnline
     );
 
-    // Tự kiểm tra mỗi 30 giây
+    // Tự ktra
     const interval = setInterval(
       autoSync,
       30000

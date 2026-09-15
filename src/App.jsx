@@ -1,142 +1,117 @@
 import { useEffect, useState } from "react";
 
-import Dashboard
-  from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
+import NewSurvey from "./pages/NewSurvey";
+import SurveyList from "./pages/SurveyList";
 
-import NewSurvey
-  from "./pages/NewSurvey";
-
-import SurveyList
-  from "./pages/SurveyList";
-
-import {
-  syncPendingSurveys
-} from "./services/sync";
+import { syncPendingSurveys } from "./services/sync";
 
 import "./index.css";
 
-
 export default function App() {
+  const [page, setPage] = useState("dashboard");
 
-  const [page, setPage] =
-    useState("dashboard");
+  // Dùng để báo cho Dashboard tải lại dữ liệu
+  const [dataVersion, setDataVersion] = useState(0);
 
+  // ========================================
+  // TỰ ĐỘNG ĐỒNG BỘ
+  // ========================================
 
-async function autoSync() {
-
-  if (!navigator.onLine) {
-    return;
-  }
-
-
-  try {
-
-    const result =
-      await syncPendingSurveys();
-
-
-    if (
-      result.successCount > 0
-    ) {
-
-      console.log(
-        `✓ Đã đồng bộ ${result.successCount} phiên`
-      );
-
-
-      // Thông báo trình duyệt
-      if (
-        "Notification" in window &&
-        Notification.permission === "granted"
-      ) {
-
-        new Notification(
-          "VKU Field Survey",
-          {
-            body:
-              `Đã đồng bộ ${result.successCount} phiên khảo sát lên Google Sheets.`
-          }
-        );
-
-      }
-
+  async function autoSync() {
+    // Không có mạng thì không đồng bộ
+    if (!navigator.onLine) {
+      return;
     }
 
+    try {
+      const result = await syncPendingSurveys();
 
-  } catch (error) {
+      // Có phiên được đồng bộ thành công
+      if (result.successCount > 0) {
+        console.log(
+          `✓ Đã đồng bộ ${result.successCount} phiên`
+        );
 
-    console.error(
-      "Auto sync error:",
-      error
-    );
+        // Báo cho Dashboard cập nhật lại dữ liệu
+        setDataVersion((version) => version + 1);
 
+        // Thông báo trình duyệt
+        if (
+          "Notification" in window &&
+          Notification.permission === "granted"
+        ) {
+          new Notification(
+            "VKU Field Survey",
+            {
+              body:
+                `Đã đồng bộ ${result.successCount} phiên khảo sát lên Google Sheets.`
+            }
+          );
+        }
+      }
+    } catch (error) {
+      console.error(
+        "Auto sync error:",
+        error
+      );
+    }
   }
 
-}
+  // ========================================
+  // XIN QUYỀN NOTIFICATION
+  // ========================================
 
   useEffect(() => {
-
     if (
       "Notification" in window &&
       Notification.permission === "default"
     ) {
-
       Notification.requestPermission();
-
     }
-
   }, []);
 
+  // ========================================
+  // AUTO SYNC
+  // ========================================
 
   useEffect(() => {
-
     // Khi mở app
     autoSync();
 
-
     // Khi Offline → Online
-    const handleOnline =
-      async () => {
+    const handleOnline = async () => {
+      console.log("Internet connected");
 
-        console.log(
-          "Internet connected"
-        );
-
-        await autoSync();
-
-      };
-
+      await autoSync();
+    };
 
     window.addEventListener(
       "online",
       handleOnline
     );
 
-
     // Tự kiểm tra mỗi 30 giây
-    const interval =
-      setInterval(
-        autoSync,
-        30000
-      );
-
+    const interval = setInterval(
+      autoSync,
+      30000
+    );
 
     return () => {
-
       window.removeEventListener(
         "online",
         handleOnline
       );
 
       clearInterval(interval);
-
     };
-
   }, []);
 
+  // ========================================
+  // TRANG TẠO KHẢO SÁT
+  // ========================================
 
   if (page === "new") {
-
     return (
       <NewSurvey
         onBack={() =>
@@ -144,12 +119,13 @@ async function autoSync() {
         }
       />
     );
-
   }
 
+  // ========================================
+  // TRANG DANH SÁCH
+  // ========================================
 
   if (page === "list") {
-
     return (
       <SurveyList
         onBack={() =>
@@ -157,23 +133,21 @@ async function autoSync() {
         }
       />
     );
-
   }
 
+  // ========================================
+  // DASHBOARD
+  // ========================================
 
   return (
-
     <Dashboard
-
       onNewSurvey={() =>
         setPage("new")
       }
-
       onViewSurveys={() =>
         setPage("list")
       }
-
+      dataVersion={dataVersion}
     />
-
   );
 }

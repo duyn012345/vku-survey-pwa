@@ -5,8 +5,7 @@ import {
 
 
 const GOOGLE_SCRIPT_URL =
-  import.meta.env.VITE_GOOGLE_SCRIPT_URL;
-
+  "https://script.google.com/macros/s/AKfycbyDcuxQwjpn0Hd-nY5AEDdTRqscLkbMEAZK8D7nOdApFdLlOU8LLelB1UPmV8Ail0K6/exec";
 
 // ========================================
 // BLOB → BASE64
